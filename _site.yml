@@ -1,9 +1,0 @@
-name: "pmrcalc"
-navbar:
-  title: "Prey Model Raw Rechner"
-  left:
-    - text: "Futtermengen"
-      href: index.html
-    - text: "Fettrechner"
-      href: about.html
-output_dir: "."

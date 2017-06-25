@@ -39,26 +39,26 @@ function futtercalc() {
       unit_rfk = "Kilogramm";
       unit_inn = "Kilogramm";
 
-      fleisch = fleisch.toFixed(2);
+      //fleisch = fleisch.toFixed(2);
       if(fleisch < 1) {
-        fleisch_tab = fleisch * 1000;
+        fleisch_tab = (fleisch * 1000).toFixed(0);
         unit_fleisch = "Gramm";
       } else {
-        fleisch_tab = fleisch;
+        fleisch_tab = fleisch.toFixed(2);
       }
-      knochen = knochen.toFixed(2);
+      //knochen = knochen.toFixed(2);
       if(knochen < 1) {
-        knochen_tab = knochen * 1000;
+        knochen_tab = (knochen * 1000).toFixed(0);
         unit_rfk = "Gramm";
       } else {
-        knochen_tab = knochen;
+        knochen_tab = knochen.toFixed(2);
       }
-      leber = leber.toFixed(2);
+      //leber = leber.toFixed(2);
       if(leber < 1) {
-        leber_tab = leber * 1000;
+        leber_tab = (leber * 1000).toFixed(0);
         unit_inn = "Gramm";
       } else {
-        leber_tab = leber;
+        leber_tab = leber.toFixed(2);
       }
 
 

@@ -10,7 +10,13 @@
     <!-- Bootstrap -->
     <!--<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/flatly/bootstrap.min.css">
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>-->
+
+    <script type="text/javascript" src="https://www.amcharts.com/lib/3/amcharts.js"></script>
+		<script type="text/javascript" src="https://cdn.amcharts.com/lib/3/pie.js"></script>
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/serial.js"></script>
+
+		<script type="text/javascript" src="https://www.amcharts.com/lib/3/plugins/export/export.min.js"></script>
+		<link rel="stylesheet" href="https://www.amcharts.com/lib/3/plugins/export/export.css">
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -21,70 +27,88 @@
   </head>
   <body>
 
-<nav class="navbar navbar-toggleable-md navbar-light bg-faded">
-  <!--<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
-          data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-          aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>-->
-  <a class="navbar-brand" href="#">Prey Model Raw Rechner</a>
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
+  <div class="navbar navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Prey Model Raw Rechner</a>
+    </div>
+  <div class="collapse navbar-collapse" id="myNavbar">
+    <ul class="nav navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#futterwerte">Futtermengen</a>
+        <a href="#futterwerte" data-toggle="tab">Futtermengen</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Fettrechner</a>
+        <a href="#fettrechner" data-toggle="tab">Fettrechner</a>
       </li>
     </ul>
   </div>
-</nav>
+  </div>
+</div>
 
-<div class="container" id="futterwerte">
-  <!--<form id="futterwerte">-->
-    <div class="form-group">
-      <label for="animalname" class="col-2 col-form-label">Name des Tieres:</label>
-        <input class="form-control" type="text" name="anname" id="anname" placeholder="Tiername">
+<div class="tab-content">
+  <div class="tab-pane active" id="futterwerte">
+<form class="form-horizontal">
+  <div class="container">
+  <div class="form-group">
+    <label for="animalname " class="col-md-3 control-label">Name des Tieres:</label>
+    <div class="col-md-2">
+      <input class="form-control" type="text" name="anname" id="anname" value="Pluto">
     </div>
-    <form class="form-inline" role="form">
-      <div class="form-group">
-        <label for="weight">(aktuelles) Gewicht des Tieres (in kg):</label>
-        <input class="form-control" type="number" name="weight" id="weight" value="10">
-      </div>
-      <div class="form-group">
-        <label for="amount">Gewünschte Futtermenge (in %):</label>
-        <input class="form-control" type="number" name="amount" id="amount" value="3">
-      </div>
-    </form>
-    <div class="form-group">
-      <label class="control-label col-sm-4" for="timerange">Für welchen Zeitraum und welches Tier soll die Futttermenge berechnet werden?</label>
-      <div class="col-4">
-        <div class="row">
-          <div class="col-4">
-            <select class="form-control" id="timerange">
-              <option value="Tag">Tag</option>
-              <option value="Woche">Woche</option>
-              <option value="Monat">Monat</option>
-            </select>
-          </div>
-          <div class="col-4">
-            <select class="form-control" id="petchoice">
-              <option value="Hund">Hund</option>
-              <option value="Katze">Katze</option>
-            </select>
-          </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label for="weight" class="col-md-3 control-label">(aktuelles) Gewicht des Tieres (in kg):</label>
+        <div class="col-md-2">
+          <input class="form-control" type="number" name="weight" id="weight" value="10">
+        </div>
+        <label for="amount" class="col-md-3 control-label">Gewünschte Futtermenge (in %):</label>
+        <div class="col-md-2">
+          <input class="form-control" type="number" name="amount" id="amount" value="3">
         </div>
       </div>
     </div>
-  <!--</form>-->
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-md-4">
-        <button id="futtercalc" class="btn btn-primary" onClick="futtercalc();">Futtermenge berechnen</button>
+  </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label for="timerange" class="col-md-3 control-label">Zeitraum</label>
+        <div class="col-md-2">
+          <select class="form-control" id="timerange">
+            <option value="Tag">Tag</option>
+            <option value="Woche">Woche</option>
+            <option value="Monat">Monat</option>
+          </select>
+        </div>
+        <label for="petchoice" class="col-md-3 control-label">Tierart</label>
+        <div class="col-md-2">
+          <select class="form-control" id="petchoice">
+            <option value="Hund">Hund</option>
+            <option value="Katze">Katze</option>
+          </select>
+        </div>
+      </div>
     </div>
   </div>
-  <br><br>
+  </div>
+</form>
+<br>
+<br>
+  <div class="container">
+    <div class="row">
+      <button type="button" id="futtercalc" class="btn btn-primary" onClick="futtercalc();">Futtermenge berechnen</button>
+    </div>
+  </div>
+<br>
+<br>
+  <div class="container">
   <div class="row">
-    <div class="col-6">
+    <div class="col-md-12">
       <div class="card">
         <div class="card-block">
           <h3 class="card-title" id="petname"></h3>
@@ -92,14 +116,67 @@
         </div>
       </div>
     </div>
+    <div class="row">
+      <div class="col-md-12">
+        <div id="foodamount"></div>
+      </div>
+      </div>
+    </div>
   </div>
-</div>
+  </div>
 
+  <div class="tab-pane" id="fettrechner">
+  <form class="form-horizontal">
+  <div class="container">
+  <div class="form-group">
+    <label for="portion" class="col-md-3 control-label">F&uuml;tterungsmenge (in Gramm):</label>
+    <div class="col-md-2">
+      <input class="form-control" type="number" name="portion" id="portion" value="500" min="10" max="10000">
+    </div>
+    <label for="fatact" class="col-md-3 control-label">Fettanteil des Futters (in %):</label>
+    <div class="col-md-2">
+      <input class="form-control" type="number" name="fatact" id="fatact" value="10" min="1" max="50">
+    </div>
+  </div>
+  <div class="form-group">
+    <div class="col-md-12">
+      <div class="form-group row">
+        <label for="fatgoal" class="col-md-3 control-label">Gew&uuml;nschter Fettanteil (in %):</label>
+        <div class="col-md-2">
+          <input class="form-control" type="number" name="fatgoal" id="fatgoal" value="20" min="1" max="50">
+        </div>
+        <label for="fatfat" class="col-md-3 control-label">Fettanteil des Fettes (%):</label>
+        <div class="col-md-2">
+          <input class="form-control" type="number" name="fatfat" id="fatfat" value="90" min="50" max="100">
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  </form>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <button type="button" id="fatcalc" class="btn btn-primary" onClick="fatcalc();">Fettmenge berechnen</button>
+    </div>
+  </div>
+  <br>
+  <br>
+  <div class="container">
+    <div class="row">
+      <h4 id="fatamounttext"></h4>
+    </div>
+      <div id="barfat" style="height: 400px; background-color: #FFFFFF;"></div>
+  </div>
+  </div>
+  </div>
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <script src="js/index.js"></script>
+    <script src="js/fatcalc.js"></script>
   </body>
 </html>

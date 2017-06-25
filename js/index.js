@@ -46,14 +46,14 @@ function futtercalc() {
       } else {
         fleisch_tab = fleisch;
       }
-      knochen = knochen.toFixed(4);
+      knochen = knochen.toFixed(2);
       if(knochen < 1) {
         knochen_tab = knochen * 1000;
         unit_rfk = "Gramm";
       } else {
         knochen_tab = knochen;
       }
-      leber = leber.toFixed(4);
+      leber = leber.toFixed(2);
       if(leber < 1) {
         leber_tab = leber * 1000;
         unit_inn = "Gramm";
@@ -68,7 +68,7 @@ function futtercalc() {
               <table class="table table-responsive table-striped">
                 <thead>
                   <th>Muskelfleisch</th>
-                  <th>Rohe fleischige Knochen</th>
+                  <th>Reiner Knochenanteil</th>
                   <th>Leber</th>
                   <th>Andere Innereien (Leber, Milz, ...)</th>
                 </thead>
@@ -125,7 +125,7 @@ function futtercalc() {
 				"value": parseFloat(fleisch),
 				"color": "#2383c1"},
 				{
-				"label": "Rohe fleischige Knochen",
+				"label": "Reiner Knochenanteil",
 				"value": parseFloat(knochen),
 				"color": "#64a61f"
 			  },

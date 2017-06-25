@@ -76,7 +76,7 @@ function fatcalc(){
 			"column-1": portion
 		},
 		{
-			"category": "Muskelfleisch, Rohe fleischige Knochen, etc.",
+			"category": "Fleisch",
 			"column-1": portion - fatamount
 		},
 		{

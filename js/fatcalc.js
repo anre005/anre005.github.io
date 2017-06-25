@@ -76,7 +76,7 @@ function fatcalc(){
 			"column-1": portion
 		},
 		{
-			"category": "Fleisch",
+			"category": "Muskelfleisch",
 			"column-1": portion - fatamount
 		},
 		{
